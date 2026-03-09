@@ -19,11 +19,35 @@ The Social Saving PRD (Section 2.6) notes: *"Non-English recipes are supported. 
 
 ## Language tiers
 
-| Tier | Examples | Additional effort |
-|---|---|---|
-| Latin-script | French, Spanish, German | Minimal — mostly works today |
-| Non-Latin scripts | Japanese, Korean, Chinese, Arabic | Font loading, encoding validation |
-| Right-to-left (RTL) | Arabic, Hebrew | Layout changes — non-trivial retrofit |
+| Tier | Examples | Additional effort | Competitor bar |
+|---|---|---|---|
+| Latin-script | French, Spanish, German, Portuguese | Minimal — mostly works today | Table stakes — all major competitors support this |
+| Non-Latin scripts | Japanese, Korean, Chinese, Hindi, Thai | Font loading, encoding validation | Paprika supports Japanese/Chinese; others do not |
+| Right-to-left (RTL) | Arabic, Hebrew, Farsi | Layout changes — non-trivial retrofit | No competitor currently supports RTL |
+
+---
+
+## Competitor landscape
+
+Research conducted March 2026. Sources: app store listings, public documentation, competitor help centers.
+
+| App | Recipe clipping | Latin-script | Non-Latin | RTL | Notable |
+|---|---|---|---|---|---|
+| **Paprika** | ✅ URL clipping | ✅ 15 languages | ✅ Japanese, Chinese (since 2012) | ❌ | Most mature language support of any competitor |
+| **ReciMe** | ✅ URL + social | ✅ EN, ES, DE, FR, PT | ❌ | ❌ | Publicly states more languages coming |
+| **Flavorish** | ✅ URL + social + image | ✅ EN, ES confirmed | ⚠️ Available on Japanese App Store — not confirmed | ❌ | Closest feature-set competitor to MYR Clipper |
+| **Mela** | ✅ URL clipping | ✅ EN, FR, DE, IT | ❌ | ❌ | Added **auto-translation** feature Apr 2025 — translates clipped recipes into user's language |
+| **Copy Me That** | ✅ URL clipping | ✅ EN only | ❌ | ❌ | Explicitly states scraper is English-optimized only |
+| **Deglaze** | ✅ URL + social | ✅ EN, FR confirmed | ❌ | ❌ | iOS-focused, limited public language info |
+| **Pluck** | ✅ URL + social + video | Unknown | Unknown | ❌ | AI-first; no public language documentation |
+| **Forkee** | ✅ URL + social | Unknown | Unknown | ❌ | Web-based; no public language documentation |
+
+### Key takeaways
+
+- **RTL is a non-issue competitively** — no competitor supports it. Calling it out of scope for MVP is well justified.
+- **Non-Latin scripts are a differentiator, not table stakes** — only Paprika has done this properly. If MYR gets there, it stands out.
+- **Latin-script is expected** — all competitors support it. Not shipping with Latin-script support (French, Spanish, German recipes) would be a gap.
+- **Mela's translation approach is worth watching** — instead of preserving content in the original language, they translate everything into the user's interface language. This is the opposite of what our Social Saving PRD requires. Neither approach is obviously correct; it depends on your user and whether they want to read recipes in their own language or preserve the original.
 
 ---
 
