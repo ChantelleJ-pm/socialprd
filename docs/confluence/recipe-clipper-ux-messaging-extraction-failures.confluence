@@ -1,0 +1,215 @@
+h1. Recipe Clipper — UX Messaging: Extraction / Parsing Failure Scenarios
+
+*Applies to:* Phase 1 / MVP “URL paste” Recipe Clipper in MyRecipes  
+*Primary surfaces:* “Add Recipe” modal (URL input), loading state, Save modal / Quick View, error toasts
+
+h2. Goals
+* Provide clear, consistent user-facing messages when recipe extraction/parsing fails.
+* Reduce user confusion and drop-off during long/failed scrapes.
+* Ensure support/analytics can diagnose failures via stable reason codes.
+
+h2. Voice & tone guidelines
+* Be plainspoken and friendly; avoid technical language like “schema,” “parsing,” “HTTP,” “Lambda.”
+* Tell the user what happened, what they can do next, and whether anything was saved.
+* Prefer one primary CTA; use a secondary CTA only when it’s meaningful.
+
+h2. Shared UI building blocks (recommended)
+* *Inline field error* under URL input (no modal takeover).
+* *Blocking error state* within the Add Recipe modal (when the user can’t proceed).
+* *Non-blocking toast* (for post-save issues, or when a background check fails).
+* *Loading state* with progressive disclosure if save takes longer than expected.
+
+h2. Canonical error taxonomy (for logging + analytics)
+Use stable reason codes across FE/BE and map them to user copy.
+
+|| Reason code || Description || Typical source ||
+| INVALID_URL | URL is missing/doesn’t parse/unsupported scheme | FE validation |
+| UNSUPPORTED_SCHEME | e.g., mailto:, file:, about: | FE validation |
+| BLOCKED_DOMAIN | Domain not in safelist / not allowed | FE/BE gating |
+| NOT_RECIPE | Page fetched but no recipe detected | Scraper |
+| MISSING_REQUIRED_METADATA | Required fields missing (e.g., title+image) | Scraper |
+| PAYWALL_OR_LOGIN | Login required, paywall wall, blocked content | Scraper |
+| ROBOTS_BLOCKED | Robots/ToS block or fetch forbidden | Scraper |
+| BOT_PROTECTION | Anti-bot / challenge page / blocked user agent | Scraper |
+| TIMEOUT | Scrape exceeded time budget | Scraper/infra |
+| NETWORK_ERROR | DNS/TLS/connection errors | Scraper/infra |
+| RATE_LIMITED | Source rate-limited requests | Scraper |
+| MODERATION_BLOCKED | Title/image flagged by moderation | Moderation service |
+| IMAGE_FETCH_FAILED | Image URL exists but can’t be fetched/processed | Scraper/image svc |
+| IMAGE_FORMAT_UNSUPPORTED | e.g., webp not supported by moderation/processing | Image/moderation |
+| DUPLICATE_SAVE | Same URL already saved by the user | BE |
+| SERVER_ERROR | Unexpected error | BE |
+| SERVICE_UNAVAILABLE | Downstream dependency is down | BE/infra |
+
+h2. Messaging scenarios (copy + CTAs)
+Each scenario includes: *Surface*, *User message*, *Primary CTA*, *Secondary CTA*, and *Notes*.
+
+h3. 1) URL input validation (before we attempt extraction)
+
+h4. 1.1 Invalid or empty URL
+*Surface:* Inline field error under URL input  
+*Title:* (none)  
+*Message:* “Enter a valid recipe link to save it.”  
+*Primary CTA:* (none)  
+*Secondary CTA:* (none)  
+*Notes:* Trigger on empty input, whitespace-only, or malformed URL.
+
+h4. 1.2 Unsupported link type / scheme
+*Surface:* Inline field error  
+*Message:* “That link type can’t be saved. Try a web link that starts with http:// or https://.”  
+*Notes:* Map from UNSUPPORTED_SCHEME.
+
+h3. 2) Domain / policy gating (user entered a valid URL, but we won’t attempt extraction)
+
+h4. 2.1 Domain not supported (not on safelist)
+*Surface:* Blocking error state in Add Recipe modal  
+*Title:* “We can’t save recipes from this site.”  
+*Message:* “This site doesn’t allow recipe saving right now. Try a link from a different recipe site.”  
+*Primary CTA:* “Try another link” (returns focus to URL field)  
+*Secondary CTA:* “See supported sites” (optional; only if we have an A–Z list)  
+*Notes:* Map from BLOCKED_DOMAIN. Avoid mentioning “safelist.”
+
+h3. 3) Extraction / parsing failed (we tried to fetch and extract)
+
+h4. 3.1 Not a recipe page
+*Surface:* Blocking error state  
+*Title:* “We couldn’t find a recipe at that link.”  
+*Message:* “Try a link to a recipe page (not a search page or homepage).”  
+*Primary CTA:* “Try another link”  
+*Secondary CTA:* (none)  
+*Notes:* Map from NOT_RECIPE.
+
+h4. 3.2 Missing required data
+*Surface:* Blocking error state  
+*Title:* “We couldn’t save this recipe.”  
+*Message:* “That page doesn’t include enough recipe info for us to save it. Try a different recipe link.”  
+*Primary CTA:* “Try another link”  
+*Secondary CTA:* (Optional) “Save link only” *(only if product decides to support link-only saves)*  
+*Notes:* Map from MISSING_REQUIRED_METADATA. If link-only is not supported, remove the secondary CTA.
+
+h4. 3.3 Paywall or login required
+*Surface:* Blocking error state  
+*Title:* “We can’t save this recipe.”  
+*Message:* “This recipe is behind a login or paywall, so we can’t access it to save.”  
+*Primary CTA:* “Try another link”  
+*Secondary CTA:* (Optional) “Save link only” *(only if allowed)*  
+*Notes:* Map from PAYWALL_OR_LOGIN.
+
+h4. 3.4 Blocked by site rules / robots
+*Surface:* Blocking error state  
+*Title:* “We can’t save recipes from this site.”  
+*Message:* “This site blocks recipe saving. Try a link from a different recipe site.”  
+*Primary CTA:* “Try another link”  
+*Secondary CTA:* (Optional) “See supported sites”  
+*Notes:* Map from ROBOTS_BLOCKED.
+
+h4. 3.5 Bot protection / challenge page
+*Surface:* Blocking error state  
+*Title:* “We can’t save this recipe right now.”  
+*Message:* “This site is blocking our attempt to save the recipe. Try a different site, or try again later.”  
+*Primary CTA:* “Try another link”  
+*Secondary CTA:* “Try again”  
+*Notes:* Map from BOT_PROTECTION.
+
+h4. 3.6 Timeout (slow site or slow scrape)
+*Surface:* Blocking error state *after* a loading state  
+*Title:* “This is taking longer than expected.”  
+*Message:* “We couldn’t save the recipe in time. Please try again, or try a different link.”  
+*Primary CTA:* “Try again”  
+*Secondary CTA:* “Try another link”  
+*Notes:* Map from TIMEOUT. Consider showing a loading message before failing (see Section 5).
+
+h4. 3.7 Network error (temporary)
+*Surface:* Blocking error state  
+*Title:* “We couldn’t reach that site.”  
+*Message:* “Please check the link and try again. If it keeps happening, try a different recipe site.”  
+*Primary CTA:* “Try again”  
+*Secondary CTA:* “Try another link”  
+*Notes:* Map from NETWORK_ERROR.
+
+h4. 3.8 Rate limited
+*Surface:* Blocking error state  
+*Title:* “We can’t save from that site right now.”  
+*Message:* “That site is limiting requests. Try again in a few minutes, or use a different link.”  
+*Primary CTA:* “Try again”  
+*Secondary CTA:* “Try another link”  
+*Notes:* Map from RATE_LIMITED.
+
+h3. 4) Moderation / safety failures (we extracted something, but can’t save it safely)
+
+h4. 4.1 Blocked by moderation (image/title)
+*Surface:* Blocking error state  
+*Title:* “We couldn’t save this recipe.”  
+*Message:* “This recipe couldn’t be saved due to content restrictions.”  
+*Primary CTA:* “Try another link”  
+*Secondary CTA:* (Optional) “Learn more” *(only if we have a policy page)*  
+*Notes:* Map from MODERATION_BLOCKED. Keep wording generic.
+
+h4. 4.2 Image fetch or processing failed
+*Surface:* Blocking error state (if image is required) OR non-blocking toast (if we can save without image)  
+*Title:* “We couldn’t save the recipe image.”  
+*Message (blocking version):* “We couldn’t save this recipe because the image couldn’t be processed. Try a different link.”  
+*Message (non-blocking version):* “Saved, but we couldn’t add the recipe image.”  
+*Primary CTA:* “Try another link” (blocking) / “View saved recipe” (non-blocking)  
+*Secondary CTA:* (none)  
+*Notes:* Map from IMAGE_FETCH_FAILED or IMAGE_FORMAT_UNSUPPORTED. Choose one behavior and keep it consistent.
+
+h3. 5) Duplicate saves
+
+h4. 5.1 Already saved
+*Surface:* Inline message near Save button or toast after submit  
+*Title:* “Already saved”  
+*Message:* “You already saved this recipe to MyRecipes.”  
+*Primary CTA:* “View saved recipe”  
+*Secondary CTA:* “Add to a collection” *(if this can be done without re-saving)*  
+*Notes:* Map from DUPLICATE_SAVE. Avoid an error tone.
+
+h3. 6) Server / dependency errors
+
+h4. 6.1 Temporary outage / service unavailable
+*Surface:* Blocking error state  
+*Title:* “We can’t save recipes right now.”  
+*Message:* “Something went wrong on our end. Please try again in a few minutes.”  
+*Primary CTA:* “Try again”  
+*Secondary CTA:* “Cancel”  
+*Notes:* Map from SERVICE_UNAVAILABLE.
+
+h4. 6.2 Unexpected error
+*Surface:* Blocking error state  
+*Title:* “Something went wrong.”  
+*Message:* “We couldn’t save that recipe. Please try again.”  
+*Primary CTA:* “Try again”  
+*Secondary CTA:* “Try another link”  
+*Notes:* Map from SERVER_ERROR. Log the reason code + correlation id.
+
+h2. Loading state copy (for long saves)
+Use progressive messaging so “slow” feels intentional.
+
+|| Time elapsed || Loading title || Loading message ||
+| 0–2s | “Saving your recipe…” | “This usually takes a few seconds.” |
+| 2–5s | “Still working…” | “We’re pulling details from the recipe site.” |
+| 5–9s | “Almost there…” | “Some sites take a bit longer to load.” |
+| >9s (optional) | “This is taking longer than expected” | “You can keep waiting, or try again.” |
+
+*CTAs (optional when >9s):* “Keep waiting” (primary), “Try again” (secondary), “Cancel” (tertiary)
+
+h2. Requirements for consistency (so the UX stays coherent)
+* Show a single error at a time; keep the user in the Add Recipe modal (don’t bounce them to a new page).
+* Always preserve the user’s entered URL in the field after a failure.
+* If nothing was saved, say so implicitly via the CTA (“Try another link”).
+* If something *was* saved (e.g., link-only or image-less save), explicitly say “Saved, but…” and provide a path to view/edit.
+
+h2. Instrumentation (minimum)
+For each failure, track:
+* reason_code (from taxonomy)
+* domain
+* surface (inline/modal/toast)
+* time_to_fail_ms
+* user_action (try_again / try_another_link / cancel / view_saved)
+
+h2. Open product decisions (must be resolved to finalize copy)
+* *Link-only saves:* If extraction fails or required fields are missing, do we allow saving a “link-only” card?
+* *Image requirement:* Is an image required for MVP saves, or can we save without it?
+* *Supported-sites list:* Will we ship a “supported sites” page (needed for “See supported sites” CTA)?
+* *Moderation behavior:* Is moderation synchronous (blocking save) or async (save first, then potentially remove/hide)?
+
