@@ -12,7 +12,7 @@ The Feb 9 support-list expansion and the cleaner mid-Feb reporting period both p
 
 - **52% success rate post-mid-Feb**
   - Up from **44%** in Feb 1-8 to **50%** in Feb 9-18
-- **3.8s average save time post-mid-Feb**
+- **3.8s average save-click time post-mid-Feb**
   - Improved from **5.2s** in Feb 1-8 to **4.3s** in Feb 9-18
 - **85% of successful saves are external-brand URLs**
   - Confirms the feature is being used for its intended external clipping use case
@@ -26,7 +26,7 @@ The Feb 9 support-list expansion and the cleaner mid-Feb reporting period both p
 ### Speaker notes
 
 - Use **2/19 onward** as the cleanest read on error attribution because the save URL error categories were updated around mid-Feb.
-- We should frame this as **progress on leading KPIs** we can see in the export: success rate, time to save, and external recipe adoption.
+- We should frame this as **progress on leading KPIs** we can see in the export: success rate, save-click time, and external recipe adoption.
 - We **cannot yet claim** progress on collection creation or repeat sessions from this export because those metrics are not included here.
 
 ## Slide 2 - Remaining friction is mostly user and site coverage, not core product reliability
