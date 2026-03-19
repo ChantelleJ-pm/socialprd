@@ -10,7 +10,7 @@ The Feb 9 support-list expansion and the cleaner mid-Feb reporting period both p
 
 ### On-slide callouts
 
-- **52% success rate post-mid-Feb**
+- **52% average daily save attempt success rate post-mid-Feb**
   - Up from **44%** in Feb 1-8 to **50%** in Feb 9-18
 - **3.8s average save-click time post-mid-Feb**
   - Improved from **5.2s** in Feb 1-8 to **4.3s** in Feb 9-18
@@ -19,7 +19,7 @@ The Feb 9 support-list expansion and the cleaner mid-Feb reporting period both p
 
 ### Supporting bullets
 
-- After adding **126 supported sites on Feb 9**, save-click-to-success conversion improved from **47% to 54%**
+- After adding **126 supported sites on Feb 9**, average daily save attempt success rate improved from **44% to 50%**, and reached **52%** in the trusted post-mid-Feb period
 - User error rate fell from **35% to 25% of submissions** in the immediate pre/post Feb 9 window
 - These are strong leading indicators that the experience is becoming faster, more reliable, and more valuable for external recipe saving
 

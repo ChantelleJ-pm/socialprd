@@ -25,7 +25,7 @@ The Feb 9 support-list expansion and the cleaner mid-Feb reporting period both p
 
 - **126 supported sites added on Feb 9**
 
-- **Average daily success rate**
+- **Average daily save attempt success rate**
   - **44.1%** in **Feb 1-8**
   - **50.3%** in **Feb 9-18**
   - **52.1%** in **Feb 19-Mar 18**
@@ -40,11 +40,6 @@ The Feb 9 support-list expansion and the cleaner mid-Feb reporting period both p
   - **24.9%** in **Feb 9-18**
   - **24.5%** in **Feb 19-Mar 18**
 
-- **Save-click-to-success conversion**
-  - **47.3%** in **Feb 1-8**
-  - **53.7%** in **Feb 9-18**
-  - **55.0%** in **Feb 19-Mar 18**
-
 - **External-brand share of successful saves**
   - **79.4%** in **Feb 9-18**
   - **85.3%** in **Feb 19-Mar 18**
@@ -52,7 +47,7 @@ The Feb 9 support-list expansion and the cleaner mid-Feb reporting period both p
 ### Supporting points
 
 - After the Feb 9 support-list expansion, the save flow improved on the KPIs we can validate in this export:
-  - higher success rate
+  - higher average daily save attempt success rate
   - lower user error rate
   - faster avg save-click time
 - The feature is clearly being used for its intended use case:
