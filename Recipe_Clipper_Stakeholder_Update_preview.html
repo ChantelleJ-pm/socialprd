@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recipe Clipper Stakeholder Update</title>
+  <style>
+    :root {
+      --navy: #0b1f3a;
+      --teal: #0096a7;
+      --green: #2cb67d;
+      --orange: #f4a259;
+      --red: #d95f5f;
+      --blue: #4f73ff;
+      --bg: #eef2f6;
+      --card: #ffffff;
+      --muted: #667085;
+      --text: #344054;
+      --border: #dce3ea;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .deck {
+      display: grid;
+      gap: 32px;
+      justify-content: center;
+    }
+
+    .slide {
+      width: 1280px;
+      min-height: 720px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(11, 31, 58, 0.12);
+      padding: 36px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 38px;
+      line-height: 1.15;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.4;
+    }
+
+    .metrics {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .metric-card,
+    .panel,
+    .insight-box,
+    .next-box {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--card);
+    }
+
+    .metric-card {
+      padding: 18px 20px 20px;
+      position: relative;
+      background: #f7f9fb;
+    }
+
+    .metric-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      border-radius: 16px 16px 0 0;
+    }
+
+    .metric-card.green::before { background: var(--green); }
+    .metric-card.teal::before { background: var(--teal); }
+    .metric-card.blue::before { background: var(--blue); }
+
+    .label {
+      font-size: 16px;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .value {
+      margin-top: 16px;
+      color: var(--navy);
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .two-col {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 18px;
+    }
+
+    .panel {
+      padding: 20px 22px;
+    }
+
+    .panel h2,
+    .next-box h2 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      color: var(--navy);
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 22px;
+      line-height: 1.5;
+      font-size: 18px;
+    }
+
+    li + li {
+      margin-top: 10px;
+    }
+
+    .takeaway {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 16px;
+      padding: 22px 22px 18px;
+    }
+
+    .takeaway h2 {
+      margin: 0 0 14px;
+      color: #fff;
+      font-size: 20px;
+    }
+
+    .takeaway ul {
+      font-size: 18px;
+    }
+
+    .footnote {
+      position: absolute;
+      left: 44px;
+      right: 44px;
+      bottom: 18px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .slide-grid {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+    }
+
+    .bar-panel {
+      padding: 22px;
+      background: #f7f9fb;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .bar-title {
+      margin: 0 0 18px;
+      font-size: 20px;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .stacked-bar {
+      display: flex;
+      height: 76px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      text-align: center;
+      padding: 0 8px;
+    }
+
+    .success { background: var(--green); width: 52%; }
+    .user { background: var(--orange); width: 25%; }
+    .external { background: var(--blue); width: 13%; }
+    .product { background: var(--red); width: 10%; font-size: 16px; }
+
+    .explain {
+      margin-top: 18px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .explain ul {
+      font-size: 18px;
+    }
+
+    .right-col {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .insight-box {
+      padding: 22px;
+      border-left: 6px solid var(--blue);
+    }
+
+    .insight-box.red {
+      border-left-color: var(--red);
+    }
+
+    .insight-box .big {
+      color: var(--navy);
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .next-box {
+      background: var(--navy);
+      color: #fff;
+      padding: 22px;
+      border: none;
+    }
+
+    .next-box h2 {
+      color: #fff;
+    }
+
+    .next-box ul {
+      font-size: 18px;
+    }
+
+    @media (max-width: 1320px) {
+      body {
+        padding: 12px;
+      }
+
+      .slide {
+        width: 100%;
+        min-height: auto;
+      }
+
+      .metrics,
+      .two-col,
+      .slide-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck">
+    <section class="slide">
+      <div class="tag">Recipe Clipper update</div>
+      <h1>Recipe Clipper is improving on key leading KPIs</h1>
+      <div class="subtitle">
+        The Feb 9 support-list expansion and the cleaner mid-Feb reporting period both point to a healthier core save flow.
+      </div>
+
+      <div class="metrics">
+        <div class="metric-card green">
+          <div class="label">Save success rate</div>
+          <div class="value">44% -&gt; 50% -&gt; 52%</div>
+          <div class="note">Feb 1-8 -&gt; Feb 9-18 -&gt; post-mid-Feb baseline</div>
+        </div>
+        <div class="metric-card teal">
+          <div class="label">Average save time</div>
+          <div class="value">5.2s -&gt; 4.3s -&gt; 3.8s</div>
+          <div class="note">Faster saves after 126 sites were added on Feb 9</div>
+        </div>
+        <div class="metric-card blue">
+          <div class="label">External-brand adoption</div>
+          <div class="value">85% of successful saves</div>
+          <div class="note">Post-mid-Feb successful saves are overwhelmingly external-brand URLs</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <h2>What improved</h2>
+          <ul>
+            <li>126 supported sites were added on Feb 9</li>
+            <li>User error rate improved from 35% to 25% of submissions in the immediate pre/post Feb 9 window</li>
+            <li>Save-click-to-success conversion improved from 47% to 54% after the site expansion</li>
+          </ul>
+        </div>
+        <div class="takeaway">
+          <h2>Stakeholder takeaway</h2>
+          <ul>
+            <li>We are making progress on the leading KPIs we can validate in this export: reliability, speed, and external recipe adoption.</li>
+            <li>Collections and repeat sessions are still important, but they are not measurable from this export.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footnote">
+        Trusted error attribution starts 2/19 after the save URL error-category update. KPI progress before then is best used directionally.
+      </div>
+    </section>
+
+    <section class="slide">
+      <div class="tag">Recipe Clipper update</div>
+      <h1>Remaining friction is mostly user and site coverage, not core product reliability</h1>
+      <div class="subtitle">
+        Use share of save attempts, not share of failures, to keep the denominator stakeholder-safe.
+      </div>
+
+      <div class="slide-grid">
+        <div class="bar-panel">
+          <div class="bar-title">Outcome mix of save attempts, post-mid-Feb (2/19-3/18)</div>
+          <div class="stacked-bar">
+            <div class="seg success">Success 52%</div>
+            <div class="seg user">User 25%</div>
+            <div class="seg external">External 13%</div>
+            <div class="seg product">Product 10%</div>
+          </div>
+          <div class="explain">
+            <ul>
+              <li>Product-side issues are about 10% of save attempts in the trusted post-mid-Feb period.</li>
+              <li>If someone asks about the 21% figure, clarify that it is the share of classified failures, not the share of all attempts.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="right-col">
+          <div class="insight-box">
+            <div class="big">92% of external errors are unsupported-site related</div>
+          </div>
+          <div class="insight-box red">
+            <div class="big">84% of product errors come from general_fail + bookmark_fail</div>
+          </div>
+          <div class="next-box">
+            <h2>What we should do next</h2>
+            <ul>
+              <li>Add the next 300+ supported sites</li>
+              <li>Keep reducing user-input friction</li>
+              <li>Target general_fail and bookmark_fail in product cleanup</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footnote">
+        Stakeholder headline: the core product is improving, and the biggest remaining scaling constraint is site coverage rather than core product reliability.
+      </div>
+    </section>
+  </div>
+</body>
+</html>
