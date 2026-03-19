@@ -1,41 +1,44 @@
 # Recipe Clipper Stakeholder Slides
 
-## Slide 1 - Recipe Clipper is performing better now than it was before February
+## Slide 1 - Recipe Clipper performance improved in stages
 
 ### Slide title
-Recipe Clipper is performing better now than it was before February
+Recipe Clipper performance improved in stages
 
 ### Slide subtitle
-Pre-Feb vs post-mid-Feb shows stronger save performance, faster save-click time, and continued external adoption.
+A three-phase view shows improvement through the transition window and into the cleaner post-mid-Feb period.
 
 ### On-slide callouts
 
-- **52.1% average daily save attempt success rate post-mid-Feb**
-  - Up from **40.5%** pre-Feb
-- **3.8s average save-click time post-mid-Feb**
-  - Improved from **5.1s** pre-Feb
-- **85.3% of successful saves are external-brand URLs post-mid-Feb**
-  - Up from **78.8%** pre-Feb and confirms the intended external clipping use case
+- **Average daily save attempt success rate**
+  - **40.5% -> 47.2% -> 52.1%**
+- **Average save-click time**
+  - **5.1s -> 4.7s -> 3.8s**
+- **External-brand share of successful saves**
+  - **79.0% -> 79.1% -> 85.3%**
 
 ### Supporting bullets
 
-- After adding **126 supported sites on Feb 9**, average daily save attempt success rate improved from **44.1%** in **Feb 1-8** to **50.3%** in **Feb 9-18**
-- User error rate improved from **35.1%** to **24.9% of submissions** in the immediate pre/post Feb 9 window
+- **126 supported sites** were added on **Feb 9** during the transition period
+- Performance improves in stages, with gains visible in the transition window and further gains in the trusted post-mid-Feb period
 - Collections and repeat usage remain important KPIs, but they are not measurable in this export
 
 ### Speaker notes
 
-- Use **pre-Feb vs post-mid-Feb** for the topline before/after story.
+- Use the **three-phase progression** for the topline story:
+  - **12/18-1/30** baseline
+  - **1/31-2/18** transition period
+  - **2/19-3/18** trusted post-mid-Feb period
 - Use **2/19 onward** as the cleanest read on error attribution because the save URL error categories were updated around mid-Feb.
 - Frame this as progress on the leading KPIs visible in the export: save attempt success rate, save-click time, and external recipe adoption.
 
-## Slide 2 - Remaining friction is mostly user and site coverage, not core product reliability
+## Slide 2 - Post-mid-Feb error mix shows site coverage is the main remaining scaling constraint
 
 ### Slide title
-Remaining friction is mostly user and site coverage, not core product reliability
+Post-mid-Feb error mix shows site coverage is the main remaining scaling constraint
 
 ### Slide subtitle
-Post-mid-Feb, product-side issues are the smallest of the three main friction buckets.
+From **2/19 onward**, error attribution is the cleanest read of user vs product vs external friction.
 
 ### On-slide callouts
 

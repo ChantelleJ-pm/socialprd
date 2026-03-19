@@ -6,8 +6,12 @@ Use the copy below as the source content for Google Slides or Beautify AI.
 
 - **Trusted error attribution starts 2/19/2026**
   - Save URL error categories were updated around mid-Feb, so **user vs product vs external** should be treated as cleanest from **2/19 onward**
+- **Three-phase framing used in the slides**
+  - **Pre-transition baseline:** **12/18-1/30**
+  - **Transition period:** **1/31-2/18**
+  - **Post-mid-Feb trusted period:** **2/19-3/18**
 - **Avg save-click time**
-  - The **5.2s -> 4.3s -> 3.8s** metric uses the shorter save-time field from the export
+  - This metric uses the shorter save-time field from the export
   - It should be labeled **avg save-click time**, not end-to-end modal time
 - **Avg modal-open time**
   - Separate metric
@@ -16,31 +20,35 @@ Use the copy below as the source content for Google Slides or Beautify AI.
 ## Slide 1 raw data
 
 ### Title
-Recipe Clipper is performing better now than it was before February
+Recipe Clipper performance improved in stages
 
 ### Subtitle
-Pre-Feb vs post-mid-Feb shows stronger save performance, faster save-click time, and continued external adoption.
+A three-phase view shows improvement through the transition window and into the cleaner post-mid-Feb period.
 
 ### Core numbers to show
 
 - **126 supported sites added on Feb 9**
 
 - **Average daily save attempt success rate**
-  - **40.5%** in **pre-Feb (12/18-1/31)**
+  - **40.5%** in **pre-transition baseline (12/18-1/30)**
+  - **47.2%** in **transition period (1/31-2/18)**
   - **52.1%** in **post-mid-Feb (2/19-3/18)**
 
 - **Avg save-click time**
-  - **5.10s** in **pre-Feb (12/18-1/31)**
+  - **5.12s** in **pre-transition baseline (12/18-1/30)**
+  - **4.65s** in **transition period (1/31-2/18)**
   - **3.84s** in **post-mid-Feb (2/19-3/18)**
 
 - **External-brand share of successful saves**
-  - **78.8%** in **pre-Feb (12/18-1/31)**
+  - **79.0%** in **pre-transition baseline (12/18-1/30)**
+  - **79.1%** in **transition period (1/31-2/18)**
   - **85.3%** in **post-mid-Feb (2/19-3/18)**
 
 ### Supporting points
 
-- After adding **126 supported sites on Feb 9**, average daily save attempt success rate improved from **44.1%** in **Feb 1-8** to **50.3%** in **Feb 9-18**
-- User error rate improved from **35.1%** to **24.9% of submissions** in the immediate pre/post Feb 9 window
+- The transition period includes the **Feb 9 addition of 126 supported sites**
+- Performance improves in stages, with gains visible in the transition window and further gains in the trusted post-mid-Feb period
+- Use the three-phase view for **topline KPI progression**, and use **2/19 onward** for the cleanest error attribution
 - The feature is clearly being used for its intended use case:
   - the majority of successful saves are **external-brand URLs**
 
@@ -56,15 +64,15 @@ Pre-Feb vs post-mid-Feb shows stronger save performance, faster save-click time,
   - retention
 
 ### Slide footnote
-Use pre-Feb vs post-mid-Feb for the topline before/after story. Use 2/19 onward as the trusted source for user vs product vs external error attribution.
+Use the three-phase view for KPI progression. Use 2/19 onward as the trusted source for user vs product vs external error attribution.
 
 ## Slide 2 raw data
 
 ### Title
-Remaining friction is mostly user and site coverage, not core product reliability
+Post-mid-Feb error mix shows site coverage is the main remaining scaling constraint
 
 ### Subtitle
-Use share of save attempts, not share of failures, to keep the denominator stakeholder-safe.
+From 2/19 onward, error attribution is the cleanest read of user vs product vs external friction.
 
 ### Outcome mix of save attempts, post-mid-Feb (2/19-3/18)
 
@@ -113,22 +121,22 @@ Stakeholder headline: the core product is improving, and the biggest remaining s
 
 ## Optional speaker-note stats
 
-- **Pre-Feb baseline (12/18-1/31)**
+- **Pre-transition baseline (12/18-1/30)**
   - avg success rate = **40.5%**
-  - avg save-click time = **5.10s**
-  - avg user error rate = **37.5% of submissions**
-  - avg external-brand share = **78.8%**
+  - avg save-click time = **5.12s**
+  - avg user error rate = **37.4% of submissions**
+  - avg external-brand share = **79.0%**
 
-- **Two weeks before Feb 9 (Jan 26-Feb 8)**
-  - avg success rate = **42.6%**
-  - avg save-click time = **5.32s**
-  - avg user error rate = **36.1% of submissions**
+- **Transition period (1/31-2/18)**
+  - avg success rate = **47.2%**
+  - avg save-click time = **4.65s**
+  - avg user error rate = **30.1% of submissions**
+  - avg external-brand share = **79.1%**
 
-- **Two weeks after Feb 9 (Feb 9-22)**
-  - avg success rate = **49.0%**
-  - avg save-click time = **4.16s**
-  - avg user error rate = **25.7% of submissions**
-  - avg external error rate = **2.7% of submissions**
+- **Immediate support-list signal**
+  - avg success rate improved from **44.1%** in **Feb 1-8** to **50.3%** in **Feb 9-18**
+  - avg save-click time improved from **5.17s** to **4.30s**
+  - avg user error rate improved from **35.1%** to **24.9% of submissions**
 
 - **Trusted post-mid-Feb baseline (Feb 19-Mar 18)**
   - avg success rate = **52.1%**
