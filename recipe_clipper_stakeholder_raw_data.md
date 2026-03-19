@@ -16,47 +16,38 @@ Use the copy below as the source content for Google Slides or Beautify AI.
 ## Slide 1 raw data
 
 ### Title
-Recipe Clipper is improving on key leading KPIs
+Recipe Clipper is performing better now than it was before February
 
 ### Subtitle
-The Feb 9 support-list expansion and the cleaner mid-Feb reporting period both point to a healthier core save flow.
+Pre-Feb vs post-mid-Feb shows stronger save performance, faster save-click time, and continued external adoption.
 
 ### Core numbers to show
 
 - **126 supported sites added on Feb 9**
 
 - **Average daily save attempt success rate**
-  - **44.1%** in **Feb 1-8**
-  - **50.3%** in **Feb 9-18**
-  - **52.1%** in **Feb 19-Mar 18**
+  - **40.5%** in **pre-Feb (12/18-1/31)**
+  - **52.1%** in **post-mid-Feb (2/19-3/18)**
 
 - **Avg save-click time**
-  - **5.17s** in **Feb 1-8**
-  - **4.30s** in **Feb 9-18**
-  - **3.84s** in **Feb 19-Mar 18**
-
-- **User error rate (% of submissions)**
-  - **35.1%** in **Feb 1-8**
-  - **24.9%** in **Feb 9-18**
-  - **24.5%** in **Feb 19-Mar 18**
+  - **5.10s** in **pre-Feb (12/18-1/31)**
+  - **3.84s** in **post-mid-Feb (2/19-3/18)**
 
 - **External-brand share of successful saves**
-  - **79.4%** in **Feb 9-18**
-  - **85.3%** in **Feb 19-Mar 18**
+  - **78.8%** in **pre-Feb (12/18-1/31)**
+  - **85.3%** in **post-mid-Feb (2/19-3/18)**
 
 ### Supporting points
 
-- After the Feb 9 support-list expansion, the save flow improved on the KPIs we can validate in this export:
-  - higher average daily save attempt success rate
-  - lower user error rate
-  - faster avg save-click time
+- After adding **126 supported sites on Feb 9**, average daily save attempt success rate improved from **44.1%** in **Feb 1-8** to **50.3%** in **Feb 9-18**
+- User error rate improved from **35.1%** to **24.9% of submissions** in the immediate pre/post Feb 9 window
 - The feature is clearly being used for its intended use case:
   - the majority of successful saves are **external-brand URLs**
 
 ### What we can and cannot claim
 
 - We **can** claim progress on:
-  - save success
+  - save attempt success rate
   - save-click time
   - external recipe adoption
 - We **cannot** claim progress on this export alone for:
@@ -65,7 +56,7 @@ The Feb 9 support-list expansion and the cleaner mid-Feb reporting period both p
   - retention
 
 ### Slide footnote
-Trusted error attribution starts 2/19 after the save URL error-category update. KPI progress before then is best used directionally.
+Use pre-Feb vs post-mid-Feb for the topline before/after story. Use 2/19 onward as the trusted source for user vs product vs external error attribution.
 
 ## Slide 2 raw data
 
@@ -121,6 +112,12 @@ These are **average daily percentages** from the trusted post-mid-Feb period:
 Stakeholder headline: the core product is improving, and the biggest remaining scaling constraint is site coverage rather than core product reliability.
 
 ## Optional speaker-note stats
+
+- **Pre-Feb baseline (12/18-1/31)**
+  - avg success rate = **40.5%**
+  - avg save-click time = **5.10s**
+  - avg user error rate = **37.5% of submissions**
+  - avg external-brand share = **78.8%**
 
 - **Two weeks before Feb 9 (Jan 26-Feb 8)**
   - avg success rate = **42.6%**
