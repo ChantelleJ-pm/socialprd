@@ -4,41 +4,41 @@
 Recipe Clipper KPI framework with launch-to-date actuals
 
 ## Subtitle
-Uses launch-to-date totals and whole-period rates from the export, rather than the post-mid-Feb snapshot.
+Updated with the latest export through **3/19/2026**, using launch-to-date totals and whole-period rates rather than the post-mid-Feb snapshot.
 
 ## North-star recommendation
 
 - **Recommended north-star:** Successful saves per active user
 - **Status:** still not available in the current export
 - **Closest current launch-to-date actuals:**
-  - **8,545** successful recipes saved
+  - **8,624** successful recipes saved
   - **51.1%** launch-to-date save success rate
 
 ## KPI layers with launch-to-date actuals
 
 ### 1. Adoption
-- **23,680** Add Recipe clicks
-- **16,739** Save Recipe clicks
-- **209** average Add Recipe clicks per 100K sessions
+- **23,803** Add Recipe clicks
+- **16,906** Save Recipe clicks
+- **208** average Add Recipe clicks per 100K sessions
 - **Gap:** % of active users who start a save is not in the current export
 
 ### 2. Value delivered
-- **8,545** successful recipes saved
+- **8,624** successful recipes saved
 - **51.1%** launch-to-date save success rate
 - **0.10%** average share of all MYR saves from Recipe Clipper
 - **Gap:** successful saves per active user is not in the current export
 
 ### 3. Experience quality
-- **4.66s** average save-click time
-- **25.8%** launch-to-date user error rate
-- **6.9%** launch-to-date product error rate
-- **3.2%** launch-to-date external/domain error rate
+- **4.65s** average save-click time
+- **25.9%** launch-to-date user error rate
+- **7.0%** launch-to-date product error rate
+- **3.3%** launch-to-date external/domain error rate
 
 ### 4. Coverage constraints
 - **81.7%** external-brand share of successful saves
-- **92.1%** of external errors are unsupported sites
-- **1,909** Supported Sites clicks
-- **529** external/domain failures
+- **1,931** Supported Sites clicks
+- **17** average Supported Sites clicks per 100K sessions
+- **552** external/domain failures
 
 ## Stakeholder takeaway
 
@@ -50,4 +50,4 @@ Uses launch-to-date totals and whole-period rates from the export, rather than t
   - repeat usage / retention
 
 ## Footnote
-Launch-to-date counts come from the exported Total row. Time-based averages and share metrics use the exported Average definitions unless analytics confirms a different preferred method.
+Launch-to-date counts come from the refreshed export through **3/19/2026**. Time-based averages and share metrics use the exported Average definitions unless analytics confirms a different preferred method.
